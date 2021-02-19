@@ -38,6 +38,10 @@ export const answerHandler = (prop) => {
    if(prop === 'next'){
       $('.act-result > .answer').eq(actIndex + 1).addClass('.act-result > act-answer')
    }
+   else if (typeof(prop) === 'number') {
+      // alert(typeof(prop))
+      $('.act-result > .answer').eq(prop).addClass('.act-result > act-answer')
+   }
    else{
       $('.act-result > .answer').eq(actIndex - 1).addClass('.act-result > act-answer')
    }

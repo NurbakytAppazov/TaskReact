@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { useDispatch, useSelector } from 'react-redux';
-import { tabToggle } from '../../jqueryHandler';
+import { answerHandler, tabToggle } from '../../jqueryHandler';
 import { loadSurak, setLoadFalse, setLoadTrue } from '../../redux/actions';
 
 export const Tabs = () => {
@@ -70,7 +70,7 @@ export const Tabs = () => {
                               if(item.id === jtem.panId) {
                                  const uJauap = jtem.userJauap;
                                  return (
-                                    <span key={item.id.toString()+jtem.surakNumber} className="ans_item">
+                                    <span key={item.id.toString()+jtem.surakNumber} className="ans_item" onClick={() => answerHandler(jtem.surakNumber-1)}>
                                        <span className="ans_num">{jtem.surakNumber}</span>
                                        <span className="ans_char">{uJauap !== undefined ? uJauap : '-'}</span>
                                     </span>
