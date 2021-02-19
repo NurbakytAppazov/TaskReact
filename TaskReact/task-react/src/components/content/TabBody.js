@@ -17,7 +17,6 @@ export const TabBody = () => {
       // console.log(limitHandler(e, limit))
       if (limitHandler(e, limit) !== false) {   
          pans.map((item, index) => {
-            // localStorage.removeItem('pan'+index);
             if (item.id === panId) {
                surak[index].map((jtem, jndex) => {
                   if (jndex === surIndex) {
@@ -53,7 +52,7 @@ export const TabBody = () => {
                      else {
                         jtem.userJauap = e.target.value;
                      }
-                     // localStorage.setItem('pan'+index, JSON.stringify(surak[index]));
+                     localStorage.setItem('pan'+index, JSON.stringify(surak[index]));
                      dispatch(setSurak(jtem.userJauap, index))
                   }
                })
