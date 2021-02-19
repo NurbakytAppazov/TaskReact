@@ -1,41 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Header } from './Header';
-import { useDispatch } from 'react-redux';
-import { loadData } from '../../redux/actions';
 import { Home } from '../Home';
 import { NuskaList } from '../NuskaList';
 import { Route, Switch } from 'react-router-dom';
-import { burgerToggle } from '../../jqueryHandler';
 
 export const Content = () => {
-   const dispatch = useDispatch()
+   // const dispatch = useDispatch()
    
-   const getTest = async() => {
-       const save = JSON.parse(localStorage.getItem('save'));
-       console.log(save)
-      if (save !== null) {
-         dispatch(loadData(save))
-      }
-      else {
-          let response = await fetch('https://cors-anywhere.herokuapp.com/http://entglobus.kz/api/task/get');
-         let result = await response.json();
-         dispatch(loadData(result))
-      }
-       //setData(result)
-   }
-   useEffect(() => {
-      getTest();
-   }, [])
+   // const getTest = async() => {
+   //    const save = JSON.parse(localStorage.getItem('save'));
+
+   //    if (save !== null) {
+   //       dispatch(loadData(save))
+   //    }
+   //    else {
+   //       let response = await fetch('http://entglobus.kz/api/task/get');
+   //       let result = await response.json();
+   //       dispatch(loadData(result.pans))
+   //    }
+   // }
+   // useEffect(() => {
+   //    getTest();
+   // }, [])
 
 
    
 
    return (
       <div className="content">
-         <Header burger = {burgerToggle}/>
+         <Header/>
          <Switch>
-            <Route path='/' exact component={Home}/>
-            <Route path='/nuskalist' component={NuskaList}/>
+            {/* <Route path='/' exact component={Home}/> */}
+            <Route path='/' exact component={NuskaList}/>
+            <Route path='/nuskalist' exact component={NuskaList}/>
+            <Route path='/nuska/:id' component={Home}/>
          </Switch>
       </div>
    );

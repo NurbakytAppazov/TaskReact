@@ -1,8 +1,20 @@
-import $ from 'jquery'
+import $, { trim } from 'jquery'
+
+export const limitHandler = (e, limit) => {
+   // console.log(lim)
+   // let limit = 3;
+   if($(`input[name ="${e.target.name}"]:checked`).length > limit) {
+      e.target.checked = false;
+      return false;
+   }
+   else{
+      return true;
+   }
+}
 
 export const tabToggle = (e) => {
-   e.preventDefault();
-   if(!$('#' + e.currentTarget.id).hasClass('act-tab')){
+   // e.preventDefault();
+   if(!$('#' + trim(e.currentTarget.id)).hasClass('act-tab')){
       $('.ques_block').removeClass('act-tab');
       $('#' + e.currentTarget.id).addClass('act-tab');
 

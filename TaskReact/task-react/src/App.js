@@ -1,20 +1,20 @@
-import React from 'react';
-import './App.css';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Content } from './components/content/Content';
-import { Sidebar } from './components/Sidebar';
-import { burgerToggle, tabToggle } from './jqueryHandler';
+import { Auth } from './components/auth/Auth';
+import { Main } from './components/Main';
+import { signIn } from './redux/actions';
 
 const App = () => {
+  const dispatch = useDispatch()
+  const userId = useSelector(state => state.auth)
+
+  useEffect(() => {
+    dispatch(signIn(sessionStorage.getItem('user')));
+  }, [])
 
   return (
-    <Router>
-      <div className="App">
-        <Sidebar/>
-        <Content tabToggle = {tabToggle} burgerToggle = {burgerToggle}/>
-      </div>
-    </Router>
+    userId !== null ? <Main/> : <Auth userId={userId}/>
   );
 }
 

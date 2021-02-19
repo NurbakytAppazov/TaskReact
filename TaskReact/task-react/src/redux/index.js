@@ -1,6 +1,12 @@
 import { combineReducers } from "redux";
-import { loadReducer } from "./reducers/loadReducer";
+import { authReducer } from "./reducers/authReducer";
+import { panReducer } from "./reducers/panReducer";
+import { surakReducer } from "./reducers/surakReducer";
+import { loadingReducer } from "./reducers/loadingReducer";
 
 export const allReducer = combineReducers({
-   load: loadReducer
+   pans: panReducer,
+   surak: surakReducer,
+   auth: authReducer,
+   loading: loadingReducer
 })
